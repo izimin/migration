@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="19-08-2020:01:TEST" author="zimin">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from information_schema.columns where table_schema='test'
+                    and table_name='developer'
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            create table test.developer
+            (
+                id            uuid         not null
+                    constraint developer_pkey
+                        primary key,
+                external_id   bigint
+                    constraint uk_lkz_id
+                        unique, --
+                inn           varchar(255) not null
+                    constraint uk_inn
+                        unique,
+                kpp           varchar(255),
+                name          varchar(255), --fullName
+                ogrn          varchar(255) not null
+                    constraint uk_ogrn
+                        unique,
+                opf_full      varchar(255),
+                reg_date      timestamp,
+                short_name    varchar(255), --shortName
+                region_id     uuid
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>
