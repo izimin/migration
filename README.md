@@ -11,6 +11,10 @@
 ### Request Params
 `typeFile: enum XLS | JSON | ... 
 `
+### Response
+Об успешной миграции информаирует статус 200 OK<br> 
+Об ошибке информирует статус 400 BAD REQUEST
+
 ## Run liquibase (create table)
     clean install -DskipTests -Dhost=localhost -Dport=5432 -Ddb=test -Dschema=test -Dlogin=postgres -Dpassword=123456
 
