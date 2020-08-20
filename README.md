@@ -12,7 +12,7 @@
 `typeFile: enum XLS | JSON | ... 
 `
 ## Run liquibase (create table)
-    clean install -DskipTests -Dhost=localhost -Dport=5432 -Ddb=test -Dschema -Dlogin=postgres -Dpassword=123456
+    clean install -DskipTests -Dhost=localhost -Dport=5432 -Ddb=test -Dschema=test -Dlogin=postgres -Dpassword=123456
 
 ## Run App
     -DdbHost=localhost
